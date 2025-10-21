@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acerca de mí</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #4a90e2, #9013fe);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      animation: aparecer 2s ease-in-out;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: flotar 3s infinite ease-in-out;
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input, textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 8px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    button {
+      background-color: #ffffff;
+      color: #4a90e2;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #ffcc00;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>¡Hola! Soy Guadalupe Silver</h1>
+  <div class="card">
+    <p>Soy estudiante técnica en Electrónica y me apasiona crear proyectos con Arduino y App Inventor. Esta es mi primera app con contenido web integrado 💻</p>
+  </div>
+
+  <h2>Formulario de contacto</h2>
+  <form>
+    <input type="text" placeholder="Tu nombre" required><br>
+    <input type="email" placeholder="Tu correo" required><br>
+    <textarea rows="4" placeholder="Tu mensaje"></textarea><br>
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>
