@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consejos del Día</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #74ebd5, #ACB6E5);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background 1s;
+    }
+    h1 {
+      color: #ffffff;
+      text-shadow: 1px 1px 2px #00000066;
+    }
+    #advice {
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px;
+      width: 80%;
+      font-size: 1.2em;
+      color: #333;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    button {
+      background: #1565c0;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #1e88e5;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>💡 Consejo del día 💡</h1>
+  <div id="advice">Cargando consejo...</div>
+  <button onclick="obtenerConsejo()">Obtener nuevo consejo</button>
+
+  <script>
+    async function obtenerConsejo() {
+      document.getElementById("advice").style.opacity = 0;
+      try {
+        const res = await fetch("https://api.adviceslip.com/advice");
+        const data = await res.json();
+        const texto = data.slip.advice;
+        document.getElementById("advice").textContent = `"${texto}"`;
+        setTimeout(() => {
+          document.getElementById("advice").style.opacity = 1;
+        }, 200);
+      } catch (error) {
+        document.getElementById("advice").textContent = "Error al obtener el consejo. Verifica tu conexión.";
+        document.getElementById("advice").style.opacity = 1;
+      }
+    }
+
+    obtenerConsejo(); // carga inicial
+  </script>
+</body>
+</html>
