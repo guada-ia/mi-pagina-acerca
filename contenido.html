@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contenido Web Interactivo</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #e3f2fd;
+      transition: background-color 0.5s;
+    }
+    h1 {
+      color: #1565c0;
+    }
+    #hora {
+      font-size: 2em;
+      margin: 20px;
+    }
+    button {
+      background-color: #1565c0;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e88e5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mi Contenido Interactivo</h1>
+  <div id="hora"></div>
+  <button onclick="cambiarColor()">Cambiar Color de Fondo</button>
+
+  <h2>Mini Quiz</h2>
+  <p>¿Cuánto es 5 + 3?</p>
+  <input type="text" id="respuesta" placeholder="Escribe tu respuesta">
+  <button onclick="verificar()">Verificar</button>
+  <p id="resultado"></p>
+
+  <script>
+    // Mostrar la hora actual cada segundo
+    function actualizarHora() {
+      const ahora = new Date();
+      document.getElementById("hora").textContent = ahora.toLocaleTimeString();
+    }
+    setInterval(actualizarHora, 1000);
+    actualizarHora();
+
+    // Cambiar color de fondo aleatoriamente
+    function cambiarColor() {
+      const color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      document.body.style.backgroundColor = color;
+    }
+
+    // Mini quiz
+    function verificar() {
+      const respuesta = document.getElementById("respuesta").value;
+      const resultado = document.getElementById("resultado");
+      if (respuesta.trim() === "8") {
+        resultado.textContent = "¡Correcto!";
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = "Incorrecto, intenta de nuevo.";
+        resultado.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
